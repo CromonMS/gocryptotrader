@@ -324,14 +324,13 @@ func (b *Bithumb) GetActiveOrders(getOrdersRequest exchange.GetOrdersRequest) ([
 		}
 		orderDetail := exchange.OrderDetail{
 			Amount:          order.Units,
-			BaseCurrency:    order.OrderCurrency,
-			QuoteCurrency:   order.PaymentCurrency,
 			Exchange:        b.Name,
 			ID:              order.OrderID,
 			OrderDate:       order.OrderDate,
 			Price:           order.Price,
 			RemainingAmount: order.UnitsRemaining,
 			Status:          string(exchange.ActiveOrderStatus),
+			CurrencyPair:    pair.NewCurrencyPairWithDelimiter(order.OrderCurrency, order.PaymentCurrency, b.ConfigCurrencyPairFormat.Delimiter),
 		}
 
 		if order.Type == "bid" {
@@ -365,14 +364,12 @@ func (b *Bithumb) GetOrderHistory(getOrdersRequest exchange.GetOrdersRequest) ([
 		}
 		orderDetail := exchange.OrderDetail{
 			Amount:          order.Units,
-			BaseCurrency:    order.OrderCurrency,
-			QuoteCurrency:   order.PaymentCurrency,
 			Exchange:        b.Name,
 			ID:              order.OrderID,
 			OrderDate:       order.OrderDate,
 			Price:           order.Price,
 			RemainingAmount: order.UnitsRemaining,
-			Status:          string(exchange.UnknownOrderStatus),
+			CurrencyPair:    pair.NewCurrencyPairWithDelimiter(order.OrderCurrency, order.PaymentCurrency, b.ConfigCurrencyPairFormat.Delimiter),
 		}
 
 		if order.Type == "bid" {
