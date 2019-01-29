@@ -1134,7 +1134,7 @@ type OrdersRequest struct {
 	EndTime   string  `json:"endTime,omitempty"`
 }
 
-// VerifyData asdfa df
+// VerifyData verifies parameter data during SendAuthenticatedHTTPRequest
 func (p OrdersRequest) VerifyData() error {
 	return nil
 }
