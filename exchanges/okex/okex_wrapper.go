@@ -362,8 +362,8 @@ func (o *OKEX) GetActiveOrders(getOrdersRequest exchange.GetOrdersRequest) ([]ex
 		})
 	}
 
-	o.FilterOrdersByTickRange(&orders, getOrdersRequest.StartTicks, getOrdersRequest.EndTicks)
-	o.FilterOrdersBySide(&orders, getOrdersRequest.OrderSide)
+	exchange.FilterOrdersByTickRange(&orders, getOrdersRequest.StartTicks, getOrdersRequest.EndTicks)
+	exchange.FilterOrdersBySide(&orders, getOrdersRequest.OrderSide)
 
 	return orders, nil
 }
@@ -398,8 +398,8 @@ func (o *OKEX) GetOrderHistory(getOrdersRequest exchange.GetOrdersRequest) ([]ex
 		})
 	}
 
-	o.FilterOrdersByTickRange(&orders, getOrdersRequest.StartTicks, getOrdersRequest.EndTicks)
-	o.FilterOrdersBySide(&orders, getOrdersRequest.OrderSide)
+	exchange.FilterOrdersByTickRange(&orders, getOrdersRequest.StartTicks, getOrdersRequest.EndTicks)
+	exchange.FilterOrdersBySide(&orders, getOrdersRequest.OrderSide)
 
 	return orders, nil
 }
